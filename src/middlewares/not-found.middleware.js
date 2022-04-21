@@ -1,1 +1,1 @@
-module.exports = (req, res, next) => res.status(404).send({status: 404, messgae: "Resource not Found"});
+module.exports = (req, res, next) => res.status(404).send({ status: 404, messgae: "Resource not Found" });
