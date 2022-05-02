@@ -28,16 +28,16 @@ class IdeaService extends BaseService {
         } //Create bad request exception en caso de un mal parámetro
 
         const idea = await _ideaRepository.get(ideaId);
-        if(!idea){
+        if (!idea) {
             const error = new Error();
             error.status = 400;
             error.message = 'Idea does not exist';
             throw error;
         }
 
-        idea.upVotes.push(true);
+        idea.upvotes.push(true);
 
-        return await _ideaRepository.update(ideaId, {upvotes: idea.upvotes});
+        return await _ideaRepository.update(ideaId, { upvotes: idea.upvotes });
     }
 
     async downVoteIdea(ideaId) {
@@ -46,18 +46,20 @@ class IdeaService extends BaseService {
             error.status = 400;
             error.message = 'ideaId must be sent';
             throw error;
-        } //Create bad request exception en caso de un mal parámetro
+        } //Create bad request exception in case of bas parameter
 
         const idea = await _ideaRepository.get(ideaId);
-        if(!idea){
+        if (!idea) {
             const error = new Error();
             error.status = 400;
             error.message = 'Idea does not exist';
             throw error;
         }
 
-        idea.downVotes.push(true);
+        idea.downvotes.push(true);
 
-        return await _ideaRepository.update(ideaId, {downvotes: idea.downvotes});
+        return await _ideaRepository.update(ideaId, { downvotes: idea.downvotes });
     }
 }
+
+module.exports = IdeaService;
